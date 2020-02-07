@@ -32,7 +32,7 @@
 
 `php main.php` // 手动执行一个handler
 
-`* * * * * php index.php` // 配置于crontab，定时运行。
+`* * * * * php index.php` // 配置于crontab(必须每分钟执行)，定时运行详情参见`conf/Cron.php`。
 
 ## TODO
 
