@@ -18,5 +18,6 @@ class Log
         }
 
         //TODO
+        print_r(self::$logs);
     }
 }

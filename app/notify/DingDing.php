@@ -6,8 +6,18 @@ use \app\Log;
 
 class DingDing extends \app\Notifier
 {
+    /**
+     * 发送钉钉
+     *
+     * @param string $dst 目标token
+     * @param array $data 数组
+     * @return void
+     */
     public function send($dst, $data)
     {
+        if (empty($data) || !is_array($data)) {
+
+        }
         $rs = $this->curl_post($dst, ['Content-Type:application/json'], $data);
         $rs = json_decode($rs, true);
         if (!empty($rs['errcode'])) {
@@ -15,7 +25,7 @@ class DingDing extends \app\Notifier
         }
         return $rs;
     }
-
+    
     private function curl_post($url, $header, $data)
     {
         $ch = curl_init();

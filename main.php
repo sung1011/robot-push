@@ -1,8 +1,8 @@
 <?php 
 /**
- * 定时任务执行
+ * 手动执行
  */
 require 'vendor/autoload.php';
 
 $main = new \app\Main();
-$main->run('');
+$main->run('demo');

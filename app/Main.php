@@ -2,15 +2,19 @@
 
 namespace app;
 
+use app\conf\Cron;
 /**
  * 流程: 满足interval的条件下, 执行独立的handler逻辑产出data, 最后以notifyType方式向dst发送data。
  */
 
 class Main
 {
-    private $conf = [
-        'demo' => ['dst' => 'www.baidu.com', 'interval' => '* * * * *', 'handler' => ['Demo', [3,2,1]]],
-    ];
+    /**
+     * dst: 目标url
+     * interval: 发送间隔
+     * handler: 指定handler返回需要发送的msg
+    */
+    private $conf = Cron::CronConfig;
 
     public function run($key = null)
     {
