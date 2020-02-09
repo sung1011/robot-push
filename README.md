@@ -15,6 +15,8 @@
 │   │   └── base.php // text, link, actioncard, markdown协议
 │   └── notify
 │       └── DingDing.php
+│       └── Email.php
+│       └── WeChat.php
 ├── composer.json
 ├── composer.lock
 ├── index.php // 配置于crontab
@@ -36,6 +38,8 @@
 
 ## TODO
 
-log  
-验签  
-bind keyword  
+- 微信通知
+- email通知
+- log  
+- 钉钉验签  
+- bind keyword  
