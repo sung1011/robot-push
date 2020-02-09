@@ -3,9 +3,6 @@
 namespace app;
 
 use app\conf\Cron;
-/**
- * 流程: 满足interval的条件下, 执行独立的handler逻辑产出data, 最后以notifyType方式向dst发送data。
- */
 
 class Main
 {
