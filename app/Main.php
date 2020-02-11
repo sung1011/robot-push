@@ -40,7 +40,7 @@ class Main
         $class = $this->conf[$key]['handler'][0];
         $params = $this->conf[$key]['handler'][1];
         $data = Handler::handle($class, $params);
-        $rs = Notifier::notify($this->conf[$key]['dst'], $data);
+        $rs = Notify::notify($this->conf[$key]['dst'], $data);
     }
 
     private function isActive($key)

@@ -4,7 +4,7 @@ namespace app\notify;
 
 use \app\Log;
 
-class WeChat extends \app\Notifier
+class WeChat extends \app\Notify
 {
 
     /**

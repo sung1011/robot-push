@@ -4,7 +4,7 @@ namespace app\notify;
 
 use \app\Log;
 
-class Email extends \app\Notifier
+class Email extends \app\Notify
 {
 
     /**

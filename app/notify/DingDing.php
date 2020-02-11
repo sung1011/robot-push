@@ -4,7 +4,7 @@ namespace app\notify;
 
 use \app\Log;
 
-class DingDing extends \app\Notifier
+class DingDing extends \app\Notify
 {
     /**
      * 发送钉钉

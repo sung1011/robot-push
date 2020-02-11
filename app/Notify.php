@@ -2,7 +2,7 @@
 
 namespace app;
 
-abstract class Notifier
+abstract class Notify
 {
     abstract public function send($dst, $data);
 
