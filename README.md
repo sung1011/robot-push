@@ -45,7 +45,7 @@ class Cron
     /**
      * 满足interval的条件下, 执行独立的handler逻辑产出data, 最后以notifyType方式向dst发送data。
      */
-    Const CronConfig = [
+    public static $CronConfig = [
         'demo' => [
             'dst' => Cron::DINGDING_DST_DEMO,
             'interval' => '5 * * * *', // 每5分钟

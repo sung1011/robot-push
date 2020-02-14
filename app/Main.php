@@ -4,6 +4,8 @@ namespace app;
 
 use app\conf\Cron;
 
+define('ROBOT_PUSH_ROOT', dirname(__FILE__) . '/');
+
 class Main
 {
     /**
@@ -11,16 +13,18 @@ class Main
      * interval: 发送间隔
      * handler: 指定handler返回需要发送的msg
     */
-    private $conf = Cron::CronConfig;
+    // private $conf = Cron::$CronConfig;
 
     public function run($key = null)
     {
         $this->beforeRun();
 
-        if (!empty($key) && isset($this->conf[$key])) {
+        $cronConf = Cron::$CronConfig;
+
+        if (!empty($key) && isset($cronConf[$key])) {
             $this->exec($key);
         } else {
-            foreach ($this->conf as $key => $conf) {
+            foreach ($cronConf as $key => $conf) {
                 if (!$this->isActive($key)) {
                     continue;
                 }
@@ -33,20 +37,22 @@ class Main
 
     public function exec($key)
     {
-        if (empty($this->conf[$key]['handler'][0])) {
+        $cronConf = Cron::$CronConfig;
+        if (empty($cronConf[$key]['handler'][0])) {
             Log::set('conf '. $key .'no class');
             return ;
         }
-        $class = $this->conf[$key]['handler'][0];
-        $params = $this->conf[$key]['handler'][1];
+        $class = $cronConf[$key]['handler'][0];
+        $params = $cronConf[$key]['handler'][1];
         $data = Handler::handle($class, $params);
-        $rs = Notify::notify($this->conf[$key]['dst'], $data);
+        $rs = Notify::notify($cronConf[$key]['dst'], $data);
     }
 
     private function isActive($key)
     {
+        $cronConf = Cron::$CronConfig;
         $schedule = new Schedule();
-        return isset($this->conf[$key]['interval']) && $schedule->checkInterval($this->conf[$key]['interval']);
+        return isset($cronConf[$key]['interval']) && $schedule->checkInterval($cronConf[$key]['interval']);
     }
 
     private function beforeRun()
